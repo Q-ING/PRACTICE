@@ -15,7 +15,7 @@ public abstract class NoteDatabase extends RoomDatabase {
 
     public abstract NoteDao noteDao();
 
-    private static synchronized  NoteDatabase getInstance(Context context){
+    protected static synchronized  NoteDatabase getInstance(Context context){
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     NoteDatabase.class, "note_database").fallbackToDestructiveMigration()
@@ -50,16 +50,6 @@ public abstract class NoteDatabase extends RoomDatabase {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 //15;returns note db instance sync means only one note at a time can access this instance tto avoid multiple instances
